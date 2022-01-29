@@ -46,7 +46,7 @@ dev_frontend:
 	@echo $(front_label); cd $(front); yarn start
 
 # =========== Test ============
-test: test_backend test_frontend
+test: test_frontend test_backend
 
 test_backend:
 	@echo $(back_label); cd $(back); yarn test
