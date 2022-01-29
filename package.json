@@ -8,14 +8,15 @@
     "node": ">=0.14.18 <15"
   },
   "scripts": {
-    "dev": "make dev",
-    "dev:backend": "make dev_backend",
-    "dev:frontend": "make dev_frontend",
-    "test": "make test",
     "build": "make build",
     "clean": "make clean",
     "clean:all": "make clean_all",
-    "postinstall": "make postinstall"
+    "dev": "make dev",
+    "dev:backend": "make dev_backend",
+    "dev:frontend": "make dev_frontend",
+    "postinstall": "make postinstall",
+    "start": "cd build && yarn start",
+    "test": "make test"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

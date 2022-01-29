@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "license": "ISC",
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "dev": "react-scripts start",
+    "test": "react-scripts test --watchAll=false"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {

@@ -6,6 +6,7 @@ root_label := "[ root ]"
 front_label := "[" $(front) "]"
 back_label := "[" $(back) "]"
 
+
 # ============ Clean ============
 clean: clean_build_dir
 
@@ -21,6 +22,7 @@ clean_node_modules_dir:
 	@echo $(back_label) "Removing node_modules..."; cd $(back); rm -rf node_modules
 	@echo $(front_label) "Removing node_modules..."; cd $(front); rm -rf node_modules
 
+
 # =========== Install ============
 install:
 	@echo "Installing dependencies..."; yarn install
@@ -35,6 +37,7 @@ install_frontend:
 
 clean_install: clean_node_modules_dir install
 
+
 # =========== Dev ============
 dev:
 	./node_modules/.bin/npm-run-all -lp dev:backend dev:frontend
@@ -43,7 +46,7 @@ dev_backend:
 	@echo $(back_label); cd $(back); yarn dev
 
 dev_frontend:
-	@echo $(front_label); cd $(front); yarn start
+	@echo $(front_label); cd $(front); yarn dev
 
 # =========== Test ============
 test: test_frontend test_backend
@@ -56,13 +59,13 @@ test_frontend:
 
 
 # =========== Build ============
-build:
-	@echo "TODO: Update build script in makefile!"
-#build: clean_build_dir build_backend build_frontend
-#	@echo "TODO: Moving directories to proper build"
-#
-#build_backend:
-#	@echo $(back_label); cd $(back); yarn build
-#
-#build_frontend:
-#	@echo $(front_label); cd $(front); yarn build
+build: clean_build_dir build_backend build_frontend
+	@cp -rf $(back)/build .
+	@cp -rf $(front)/build/ ./build/public/
+	@cp $(back)/package.json ./build/; cd build; yarn install --only=production
+
+build_backend:
+	@echo $(back_label); cd $(back); yarn build
+
+build_frontend:
+	@echo $(front_label); cd $(front); yarn build
