@@ -67,7 +67,7 @@ lint_frontend:
 
 
 # =========== Build ============
-build: clean_build_dir build_backend build_frontend
+build: lint test clean_build_dir build_backend build_frontend
 	@cp -rf $(back)/build .
 	@cp -rf $(front)/build/ ./build/public/
 	@cp $(back)/package.json ./build/; cd build; yarn install --only=production
