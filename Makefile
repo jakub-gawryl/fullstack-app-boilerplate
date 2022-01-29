@@ -37,7 +37,7 @@ clean_install: clean_node_modules_dir install
 
 # =========== Dev ============
 dev:
-	make -j2 dev_backend dev_frontend
+	./node_modules/.bin/npm-run-all -lp dev:backend dev:frontend
 
 dev_backend:
 	@echo $(back_label); cd $(back); yarn dev

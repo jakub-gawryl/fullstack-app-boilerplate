@@ -1,11 +1,13 @@
 import express from 'express';
 const app = express();
-const PORT = 3005;
+const PORT = 5000; // TODO Move to .env
 
-app.get('/', (req, res) => {
-  res.send('[Backend] Hello World!')
-})
+app.get('/api', (req, res) => {
+  res.json({
+    status: '[Backend API] Hello World!'
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on PORT ${PORT}`)
-})
+});
