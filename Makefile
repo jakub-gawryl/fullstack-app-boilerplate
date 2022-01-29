@@ -48,7 +48,7 @@ dev_backend:
 dev_frontend:
 	@echo $(front_label); cd $(front); yarn dev
 
-# =========== Test ============
+# =========== Test & Lint============
 test: test_frontend test_backend
 
 test_backend:
@@ -56,6 +56,14 @@ test_backend:
 
 test_frontend:
 	@echo $(front_label); cd $(front); yarn test
+
+lint: lint_frontend lint_backend
+
+lint_backend:
+	@echo $(back_label); cd $(back); yarn lint
+
+lint_frontend:
+	@echo $(front_label); cd $(front); yarn lint
 
 
 # =========== Build ============

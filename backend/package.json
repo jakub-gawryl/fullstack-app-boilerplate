@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev": "nodemon src/index.ts",
+    "lint": "eslint src/ --ext=.ts",
     "start": "node ./index.js",
     "test": "jest"
   },
@@ -15,6 +16,9 @@
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.8.0",
     "jest": "^27.4.7",
     "nodemon": "^2.0.15",
     "ts-jest": "^27.1.3",
