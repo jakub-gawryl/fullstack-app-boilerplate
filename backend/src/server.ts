@@ -15,7 +15,7 @@ app.get('/api', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running in ${process.env.NODE_ENV?.toUpperCase()} mode on port ${PORT}`);
 });
 
 export default app;

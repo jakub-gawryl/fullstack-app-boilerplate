@@ -27,6 +27,7 @@ This command:
 - moves `backend/build/` to root dir `build/`
 - moves `frontend/build/` to `build/public/`
 - moves `package.json` to `build/` dir and install dependencies
+- copy `.env.example` to `build/.env`
 
 ## Additional commands:
 - `make clean` - removes `build/` directories (in root, backend and frontend directories)
