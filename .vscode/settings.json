@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    ".env": "env",
-    ".env.development": "env"
+    ".env.example": "env",
+    ".env.production": "env"
   }
 }

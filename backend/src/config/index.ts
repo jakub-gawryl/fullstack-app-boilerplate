@@ -1,5 +1,15 @@
-const config = {
-  host: process.env.APP_HOST_URL || ''
+export type AppConfig = {
+  host: string;
 };
 
-export default config;
+const getConfig = (): AppConfig => {
+  const host = process.env.APP_HOST_URL || '';
+
+  return {
+    host
+  };
+};
+
+export {
+  getConfig
+};

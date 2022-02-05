@@ -3,6 +3,7 @@ node_modules
 coverage
 build
 .env
+.env.production
 
 # *** Frontend ***
 .DS_Store

@@ -1,21 +1,26 @@
 import path from 'path';
 import express from 'express';
-const PORT = 5000; // TODO Move to .env
+import { getConfig } from './config';
+
+const port = 5000;
+const { host } = getConfig();
 
 const app = express();
 const publicDir = path.resolve('public');
 
-// Public dir
+// Set public dir
 app.use(express.static(publicDir));
 
+// Example route
 app.get('/api', (req, res) => {
   res.json({
     status: '[Backend API] Hello World!'
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running in ${process.env.NODE_ENV?.toUpperCase()} mode on port ${PORT}`);
+// Run server
+app.listen(port, () => {
+  console.log(`Server is running in ${process.env.NODE_ENV?.toUpperCase()} mode on ${host}`);
 });
 
 export default app;

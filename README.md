@@ -7,6 +7,8 @@ Clone repository, then:
 make install
 ```
 
+After installation `.env.example` is automatically copied to `.env`.
+
 ## Development
 To run dev environment:
 ```

@@ -1,10 +1,6 @@
 import dotenv from 'dotenv';
 
-const isProduction =  process.env.NODE_ENV === 'production';
-
-dotenv.config({
-  path: isProduction ? '.env' : '../.env.development'
-});
+dotenv.config();
 
 // Env variables that are required to run app
 const requiredEnvVars = [

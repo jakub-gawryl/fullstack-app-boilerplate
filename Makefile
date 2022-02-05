@@ -28,6 +28,7 @@ install:
 	@echo "Installing dependencies..."; yarn install
 
 postinstall: install_backend install_frontend
+	@cp .env.example .env
 
 install_backend:
 	@echo $(back_label); cd $(back); yarn install
@@ -71,7 +72,7 @@ build: lint test clean_build_dir build_backend build_frontend
 	@cp -rf $(back)/build .
 	@cp -rf $(front)/build/ ./build/public/
 	@cp $(back)/package.json ./build/; cd build; yarn install --only=production
-	@cp .env.example build/.env
+	node .tools/copyProdEnv.js
 
 build_backend:
 	@echo $(back_label); cd $(back); yarn build
