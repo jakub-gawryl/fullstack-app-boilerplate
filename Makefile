@@ -1,18 +1,21 @@
 # ============ Variables ============
+GREEN   := $(shell tput -Txterm setaf 2)
+YELLOW  := $(shell tput -Txterm setaf 3)
+BLUE    := $(shell tput -Txterm setaf 4)
+MAGENTA := $(shell tput -Txterm setaf 5)
+CYAN    := $(shell tput -Txterm setaf 6)
+WHITE   := $(shell tput -Txterm setaf 7)
+RESET   := $(shell tput -Txterm sgr0)
+
 front := frontend
 back 	:= backend
 
-root_label  := "[ root ]"
-front_label := "[" $(front) "]"
-back_label  := "[" $(back) "]"
+ROOT_LABEL  := "${BLUE}[ *** root *** ]${RESET}"
+FRONT_LABEL := "${CYAN}[ ***" $(front) "*** ]${RESET}"
+BACK_LABEL  := "${MAGENTA}[ ***" $(back) "*** ]${RESET}"
 
 # ============ Help ============
 # More about makefile help: https://gist.github.com/prwhite/8168133
-
-GREEN  := $(shell tput -Txterm setaf 2)
-WHITE  := $(shell tput -Txterm setaf 7)
-YELLOW := $(shell tput -Txterm setaf 3)
-RESET  := $(shell tput -Txterm sgr0)
 
 HELP_FUN = \
 	%help; \
@@ -37,29 +40,29 @@ clean: clean_build_dir																					##@cleaning Removes all 'build/' dire
 clean_all: clean_build_dir clean_node_modules_dir								##@cleaning Same as clean + removes all node_modules directories
 
 clean_build_dir:
-	@echo $(root_label) "Removing build..."; rm -rf build
-	@echo $(back_label) "Removing build..."; cd $(back); rm -rf build
-	@echo $(front_label) "Removing build..."; cd $(front); rm -rf build
+	@echo $(ROOT_LABEL) "Removing build..."; rm -rf build
+	@echo $(BACK_LABEL) "Removing build..."; cd $(back); rm -rf build
+	@echo $(FRONT_LABEL) "Removing build..."; cd $(front); rm -rf build
 
 clean_node_modules_dir:
-	@echo $(root_label) "Removing node_modules..."; rm -rf node_modules
-	@echo $(back_label) "Removing node_modules..."; cd $(back); rm -rf node_modules
-	@echo $(front_label) "Removing node_modules..."; cd $(front); rm -rf node_modules
+	@echo $(ROOT_LABEL) "Removing node_modules..."; rm -rf node_modules
+	@echo $(BACK_LABEL) "Removing node_modules..."; cd $(back); rm -rf node_modules
+	@echo $(FRONT_LABEL) "Removing node_modules..."; cd $(front); rm -rf node_modules
 
 
 # =========== Install ============
 install:																												##@installation Install dependencies for root directory (yarn install)
-	@echo "Installing dependencies..."; yarn install
+	@echo $(ROOT_LABEL); yarn install
 
 postinstall: install_backend install_frontend										##@installation [auto triggered after install] Install dependencies for backend/ and frontend/ + copy .env files
 	@cp .env.example .env
 	@cp .env.example .env.production
 
 install_backend:
-	@echo $(back_label); cd $(back); yarn install
+	@echo $(BACK_LABEL); cd $(back); yarn install
 
 install_frontend:
-	@echo $(front_label); cd $(front); yarn install
+	@echo $(FRONT_LABEL); cd $(front); yarn install
 
 clean_install: clean_node_modules_dir install										##@installation Removes all node_modules directories and run install
 
@@ -69,27 +72,27 @@ dev:																														##@development Runs backend server and React's
 	./node_modules/.bin/npm-run-all -lp dev:backend dev:frontend
 
 dev_backend:																										##@development Runs backend server only
-	@echo $(back_label); cd $(back); yarn dev
+	@echo $(BACK_LABEL); cd $(back); yarn dev
 
 dev_frontend:																										##@development Runs React's live server only
-	@echo $(front_label); cd $(front); yarn dev
+	@echo $(FRONT_LABEL); cd $(front); yarn dev
 
 # =========== Test & Lint============
 test: test_frontend test_backend																##@testing Runs tests for frontend and backend
 
 test_backend:																										##@testing Runs tests only for backend
-	@echo $(back_label); cd $(back); yarn test
+	@echo $(BACK_LABEL); cd $(back); yarn test
 
 test_frontend:																									##@testing Runs tests only for frontend
-	@echo $(front_label); cd $(front); yarn test
+	@echo $(FRONT_LABEL); cd $(front); yarn test
 
 lint: lint_frontend lint_backend																##@other Runs eslint for frontend and backend
 
 lint_backend:
-	@echo $(back_label); cd $(back); yarn lint
+	@echo $(BACK_LABEL); cd $(back); yarn lint
 
 lint_frontend:
-	@echo $(front_label); cd $(front); yarn lint
+	@echo $(FRONT_LABEL); cd $(front); yarn lint
 
 
 # =========== Build ============
@@ -100,7 +103,7 @@ build: lint test clean_build_dir build_backend build_frontend		##@build Builds b
 	node .tools/copyProdEnv.js
 
 build_backend:
-	@echo $(back_label); cd $(back); yarn build
+	@echo $(BACK_LABEL); cd $(back); yarn build
 
 build_frontend:
-	@echo $(front_label); cd $(front); yarn build
+	@echo $(FRONT_LABEL); cd $(front); yarn build
