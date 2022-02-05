@@ -1,19 +1,27 @@
 import dotenv from 'dotenv';
+import { isDevEnv } from './utils';
 
-dotenv.config();
+const runPrecheck = (): Promise<void> => new Promise((resolve, reject) => {
+  const path = isDevEnv() ? '../.env' : '.env';
 
-// Env variables that are required to run app
-const requiredEnvVars = [
-  'APP_HOST_URL'
-];
+  dotenv.config({path});
 
-const missingVars = [];
-requiredEnvVars.forEach(envVar => {
-  if (!process.env[envVar]) {
-    missingVars.push(envVar);
+  // Env variables that are required to run app
+  const requiredEnvVars = process.env.PRECHECK_REQUIRED_ENV_VARS?.trim().split(',') || [];
+  const missingVars = [];
+
+  requiredEnvVars.filter(item => item).forEach(envVar => {
+    if (!process.env[envVar]) {
+      missingVars.push(envVar);
+    }
+  });
+
+  if (missingVars.length > 0) {
+    return reject(`❌ Variable(s): ${missingVars.join(',')} are required to run the application!`);
   }
+  resolve();
 });
 
-if (missingVars.length > 0) {
-  throw Error(`❌ Wariables: ${missingVars.join(',')} are required to run the application!`);
-}
+export {
+  runPrecheck
+};
