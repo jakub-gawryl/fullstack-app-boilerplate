@@ -1,3 +1,6 @@
 ## 0.1.0
 
-- Initial release
+## Features
+
+- Expressjs server implemented
+- Basic React application prepared
