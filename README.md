@@ -40,10 +40,12 @@ What this command do:
 - copy `.env.production` (if present) to `build/.env`
 
 ## Additional commands:
-- `make clean` - removes `build/` directories (in root, backend and frontend directories)
-- `make clean_all` - removes build (as above) plus all `node_modules/`
-- `make test` - run tests (frontent and backend)
-- `make lint` - run eslint against frontent and backend
+
+To see full list of available commands, run:
+
+```
+make help
+```
 
 ## Used technology
 
