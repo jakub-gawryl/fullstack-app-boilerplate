@@ -26,13 +26,13 @@ const runTask = async () => {
   const isProdEnvPresent = await fs.existsSync(ENV_PROD);
   
   if (isProdEnvPresent) {
-    console.log(`⚠ ${ENV_PROD} FOUND - moving to ${ENV_TARGET}`);
+    console.log(`✔ ${ENV_PROD} FOUND - copying to ${ENV_TARGET}`);
     await fs.copyFileSync(ENV_PROD, ENV_TARGET);
   }
   else {
-    console.log(`⚠ ${ENV_PROD} NOT FOUND - creating new one from ${ENV_EXAMPLE}`);
-    const cleaned = await getCleanEnvFile();
-    await writeProdEnv(cleaned);
+    console.warn(`⚠ ${ENV_PROD} NOT FOUND, ${ENV_TARGET} NOT created!`);
+    // const cleaned = await getCleanEnvFile();
+    // await writeProdEnv(cleaned);
   }
 
   exit(0);

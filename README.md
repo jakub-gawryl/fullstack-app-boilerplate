@@ -20,16 +20,15 @@ It runs backend server at http://localhost:5000 and frontend react's default liv
 ## Build
 
 **NOTES**: 
-- By default, the build process will get all the keys from the file `.env.example` (with no value) and copy them to `build/.env`. To pass the variables required to run your application in production, you can create a `.env.production` file in the root directory, which will then be copied to `build/.env `.
-- Production serverdefault port is `5000`
+- Before build, make sure all variables passed to `.env.production` file in the root directory are correct. This file will be copied to `build/.env `.
+- To prevent creating `build/.env` file, remove `.env.production` file from root directory before build
+- Production server default port is `5000`
 
-To build application, siply run:
+To build application, run:
 
 ```
 make build
 ```
-
-it creates backend server with `api/` support and 
 
 What this command do:
 - run lint and tests for both frontent and backend
@@ -38,7 +37,7 @@ What this command do:
 - moves `backend/build/` to root `build/`
 - moves `frontend/build/` to `build/public/`
 - moves `package.json` to `build/` dir and install dependencies
-- copy `.env.example` to `build/.env`
+- copy `.env.production` (if present) to `build/.env`
 
 ## Additional commands:
 - `make clean` - removes `build/` directories (in root, backend and frontend directories)

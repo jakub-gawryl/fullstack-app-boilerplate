@@ -29,6 +29,7 @@ install:
 
 postinstall: install_backend install_frontend
 	@cp .env.example .env
+	@cp .env.example .env.production
 
 install_backend:
 	@echo $(back_label); cd $(back); yarn install

@@ -3,8 +3,7 @@ import express from 'express';
 import { getConfig } from './config';
 
 const runServer = (): Promise<express.Application> => new Promise((resolve) => {
-  const port = 5000;
-  const { host } = getConfig();
+  const { host, port } = getConfig();
 
   const app = express();
   const publicDir = path.resolve('public');
@@ -21,7 +20,8 @@ const runServer = (): Promise<express.Application> => new Promise((resolve) => {
 
   // Run server
   app.listen(port, () => {
-    console.log(`Server is running in ${process.env.NODE_ENV?.toUpperCase()} mode on ${host}`);
+    const mode = process.env.NODE_ENV?.toUpperCase();
+    console.log(`Server is running in ${mode} mode on ${host}`);
     resolve(app);
   });
 });
