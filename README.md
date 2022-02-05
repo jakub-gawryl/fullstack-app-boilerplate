@@ -1,5 +1,7 @@
 # Boilerplate for express + React apps
 
+Basic boilerplate that uses expressjs for serving React front-end application.
+
 ## Installation
 
 Clone repository, then:

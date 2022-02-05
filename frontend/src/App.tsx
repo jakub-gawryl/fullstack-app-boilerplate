@@ -1,18 +1,11 @@
 import React from 'react';
+import DemoComponent from 'components/DemoComponent/DemoComponent';
 
 const App: React.FC = () => {
-  const [serverStatus, setServerStatus] = React.useState('');
-
-  React.useEffect(() => {
-    fetch('/api')
-      .then(res => res.json())
-      .then(data => setServerStatus(data.status));
-  }, [setServerStatus]);
 
   return (
     <>
-      <p>Frontend: Hello world</p>
-      <p>Backend: {serverStatus}</p>
+      <DemoComponent />
     </>
   );
 };

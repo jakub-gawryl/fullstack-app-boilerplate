@@ -14,7 +14,7 @@ const runServer = (): Promise<express.Application> => new Promise((resolve) => {
   // Example route
   app.get('/api', (req, res) => {
     res.json({
-      status: '[Backend API] Hello World!'
+      status: 'Hello Backend!'
     });
   });
 
