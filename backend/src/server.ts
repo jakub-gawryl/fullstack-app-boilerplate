@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import { getConfig } from './config';
+import routes from './routes';
 
 const runServer = (): Promise<express.Application> => new Promise((resolve) => {
   const { host, port } = getConfig();
@@ -11,12 +12,8 @@ const runServer = (): Promise<express.Application> => new Promise((resolve) => {
   // Set public dir
   app.use(express.static(publicDir));
 
-  // Example route
-  app.get('/api', (req, res) => {
-    res.json({
-      status: 'Hello Backend!'
-    });
-  });
+  // Set routes
+  app.use(routes);
 
   // Run server
   app.listen(port, () => {

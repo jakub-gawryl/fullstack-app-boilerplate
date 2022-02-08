@@ -1,6 +1,6 @@
 # Boilerplate for express + React apps
 
-Basic boilerplate that uses expressjs for serving React front-end application.
+Basic boilerplate that uses expressjs for serving React front-end application. It uses GraphQL for client-server communication.
 
 ## Installation
 
@@ -33,7 +33,7 @@ make build
 ```
 
 What this command do:
-- run lint and tests for both frontent and backend
+- run lint and tests for both frontend and backend
 - clean all build dirs
 - build backend and frontend
 - moves `backend/build/` to root `build/`
@@ -51,14 +51,20 @@ make help
 
 ## Used technology
 
-### Frontend
+### Common
 
-TypeScript / Jest / ESLint
+- [GraphQL](https://graphql.org/) ([documentation](https://graphql.org/code/#javascript)) - query language for APIs
+
+### Frontend
 
 - [React](https://reactjs.org/) ([documentation](https://reactjs.org/docs/getting-started.html)) - Created by `yarn create react-app`. Also "proxy" key with `http://localhost:5000` (for local dev purposes)) is set in package.json.
 
 ### Backend
 
-TypeScript / Jest / ESLint
+- [Expressjs](https://expressjs.com/) ([documentation](https://expressjs.com/en/4x/api.html)) - http server for deliver frontend application at `/` route, and for `/api` requests
 
-- [Expressjs](https://expressjs.com/) ([documentation](https://expressjs.com/en/4x/api.html)) - Http server for deliver frontent application at `/` route, and for `/api` requests
+### Development support
+
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types.
+- [Jest](https://jestjs.io/) - Testing framework
+- [ESLint](https://eslint.org/) - JavaScrip linter
