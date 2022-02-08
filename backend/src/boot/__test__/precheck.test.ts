@@ -7,16 +7,6 @@ describe('runPrecheck', () => {
     process.env = {...env};
   });
 
-  it ('resolves for development environment', async () => {
-    process.env = {
-      NODE_ENV: 'development',
-      PRECHECK_REQUIRED_ENV_VARS: 'APP_HOST_URL',
-      APP_HOST_URL: undefined
-    };
-
-    await expect(runPrecheck()).resolves.toBe(undefined);
-  });
-
   it ('resolves, when required var is not set', async () => {
     process.env = {
       NODE_ENV: 'production',

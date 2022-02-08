@@ -1,13 +1,13 @@
-import { runPrecheck } from './precheck';
-import { runServer } from './server';
+import { runPrecheck, runDatabase, runServer } from './boot';
 
 const runApp = async () => {
   try {
     await runPrecheck();
+    await runDatabase();
     await runServer();
   }
   catch (err) {
-    console.error(err);
+    console.error(`❌ Application error: ${err.message}`);
   }
 };
 
