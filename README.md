@@ -1,6 +1,12 @@
 # Boilerplate for express + React apps
 
 Basic boilerplate that uses expressjs for serving React front-end application. It uses GraphQL for client-server communication.
+### Features
+
+- Expressjs backend server
+- React app frontend
+- GraphQL communication between client and server
+- Database ORM - sequelize with SQLite and MySQL dialects
 
 ## Installation
 
@@ -62,6 +68,7 @@ make help
 ### Backend
 
 - [Expressjs](https://expressjs.com/) ([documentation](https://expressjs.com/en/4x/api.html)) - http server for deliver frontend application at `/` route, and for `/api` requests
+- [sequelize](https://sequelize.org/) ([documentation](https://sequelize.org/v6/)) - Database ORM
 
 ### Development support
 
