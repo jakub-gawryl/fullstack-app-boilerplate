@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { isDevEnv } from '../utils';
-import schema from '../schema/graphql';
+import schema from '../graphql';
 
 const router = Router();
 

@@ -1,4 +1,4 @@
-import { runPrecheck, runDatabase, runServer } from './boot';
+import { runPrecheck, runDatabase, runServer } from './core';
 
 const runApp = async () => {
   try {
