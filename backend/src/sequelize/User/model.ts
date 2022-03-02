@@ -57,9 +57,9 @@ const User: UserModel = db.define('User', {
     }
   },
   scopes: {
-    withoutPassword: {
+    withPassword: {
       attributes: {
-        exclude: [
+        include: [
           'password'
         ]
       }

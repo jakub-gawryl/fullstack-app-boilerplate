@@ -1,7 +1,7 @@
 import { User } from './model';
 
 const createUser = async (args: any) => {
-  const user = await User.scope('withoutPassword').create({
+  const user = await User.create({
     ...args
   }).catch(err => {
     if (err.parent?.code === 'ER_DUP_ENTRY') {
