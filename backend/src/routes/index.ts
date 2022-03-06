@@ -7,7 +7,6 @@ const router = Router();
 const authErrorHandler = (err, req, res, next) => {
   if (err) {
     return res.status(500).json({
-      success: false,
       error: err.message
     });
   }

@@ -3,6 +3,13 @@ import jsonwebtoken from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { User } from '../sequelize/User';
 import { verifyJWT } from '../middleware/verifyJWT';
+import { getConfig } from '../config';
+
+const {
+  jwt: {
+    secret
+  }
+} = getConfig();
 
 const router = Router();
 
@@ -47,7 +54,7 @@ router.post('/login', async (req, res, next) => {
 
     res.json({
       success: true,
-      jwt: jsonwebtoken.sign(jwtData, 'secret', jwtOpts) // TODO ❗❗❗❗❗ Move secret + expires to env!!!
+      jwt: jsonwebtoken.sign(jwtData, secret, jwtOpts)
     });
   }
   catch (err) {

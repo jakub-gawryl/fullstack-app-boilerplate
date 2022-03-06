@@ -11,7 +11,11 @@ const runApp = async () => {
     ]);
   }
   catch (err) {
-    console.error(`❌ Application error: ${err.message}`);
+    const msg = typeof err === 'string'
+      ? err
+      : err.message || 'unknown error...';
+
+    console.error(`❌ Application error: ${msg}`);
   }
 };
 

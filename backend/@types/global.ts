@@ -6,6 +6,8 @@ declare global {
       APP_HOST_URL?: string;
       APP_PROD_PORT?: string;
       APP_DB_URL?: string;
+      APP_JWT_SECRET?: string;
+      APP_JWT_EXPIRES_IN?: string;
     }
   }
 }

@@ -1,10 +1,17 @@
 import passport from 'passport';
 import PassportJWT from 'passport-jwt';
 import { User } from '../../sequelize/User';
+import { getConfig } from '../../config';
+
+const {
+  jwt: {
+    secret
+  }
+} = getConfig();
 
 const strategyProps = {
   jwtFromRequest: PassportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'secret' // TODO ❗❗❗❗❗ move to ENV!
+  secretOrKey: secret
 };
 
 const strategyResolver = async (jwtPayload, done) => {

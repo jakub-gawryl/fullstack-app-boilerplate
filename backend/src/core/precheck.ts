@@ -21,7 +21,7 @@ const runPrecheck = (): Promise<void> => new Promise((resolve, reject) => {
     const plural = missingVars.length > 1;
     const missingStr = missingVars.join(',');
 
-    return reject(`❌ Variable${plural ? 's' : ''}: ${missingStr} ${plural ? 'are' : 'is'} required to run the application!`);
+    return reject(`Variable${plural ? 's' : ''} ${missingStr} ${plural ? 'are' : 'is'} required to run the application!`);
   }
 
   resolve();
