@@ -7,7 +7,8 @@ import { getConfig } from '../config';
 
 const {
   jwt: {
-    secret
+    secret,
+    expiresIn
   }
 } = getConfig();
 
@@ -49,7 +50,7 @@ router.post('/login', async (req, res, next) => {
     };
 
     const jwtOpts = {
-      expiresIn: '24h'
+      expiresIn
     };
 
     res.json({
