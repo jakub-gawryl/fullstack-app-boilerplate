@@ -1,7 +1,10 @@
 import { SequelizeUser } from '../../model/User';
 
-const createUser = async (_, args) => {
-  console.log(args);
+const createUser = async (_, args, context) => {
+  if (!context.user) {
+    throw Error('Unauthorized');
+  }
+
   const user = await SequelizeUser.create({
     ...args
   }).catch(err => {
@@ -15,7 +18,11 @@ const createUser = async (_, args) => {
   return user;
 };
 
-const getUserById = async (_, args) => {
+const getUserById = async (_, args, context) => {
+  if (!context.user) {
+    throw Error('Unauthorized');
+  }
+
   const user = await SequelizeUser.findOne({
     where: {
       id:args.id
@@ -25,7 +32,11 @@ const getUserById = async (_, args) => {
   return user;
 };
 
-const listUsers = async () => {
+const listUsers = async (_, args, context) => {
+  if (!context.user) {
+    throw Error('Unauthorized');
+  }
+
   const users = await SequelizeUser.findAll();
 
   return users;
