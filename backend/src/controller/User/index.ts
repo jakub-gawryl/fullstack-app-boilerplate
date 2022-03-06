@@ -1,6 +1,7 @@
 import { SequelizeUser } from '../../model/User';
 
-const createUser = async (args: any) => {
+const createUser = async (_, args) => {
+  console.log(args);
   const user = await SequelizeUser.create({
     ...args
   }).catch(err => {
@@ -14,10 +15,10 @@ const createUser = async (args: any) => {
   return user;
 };
 
-const getUserById = async (userId: string) => {
+const getUserById = async (_, args) => {
   const user = await SequelizeUser.findOne({
     where: {
-      id: userId
+      id:args.id
     }
   });
 

@@ -2,7 +2,7 @@ import { Request, Router } from 'express';
 import jsonwebtoken from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { SequelizeUser } from '../model/User';
-import { verifyJWT } from '../middleware/verifyJWT';
+import { isJWTAuthorized } from '../middleware/isJWTAuthorized';
 import { getConfig } from '../config';
 
 const {
@@ -69,7 +69,7 @@ router.post('/login', async (req, res, next) => {
  * 
  * @route   GET /auth/me
  */
-router.get('/me', verifyJWT, (req: Request, res) => {
+router.get('/me', isJWTAuthorized, (req: Request, res) => {
   // TODO Fix types and remove ts-ignore. Seems like there's problem in
   // nodemon, but VSC doesn't complains about firstName and lastName
   // @ts-ignore

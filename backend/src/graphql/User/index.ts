@@ -23,11 +23,11 @@ const UserQuery = {
     args: {
       id: {type: GraphQLString}
     },
-    resolve: (_, args) => getUserById(args.id)
+    resolve: getUserById
   },
   users: {
     type: new GraphQLList(UserType),
-    resolve: () => listUsers()
+    resolve: listUsers
   }
 };
 
@@ -41,7 +41,7 @@ const UserMutations = {
       lastName: {type: GraphQLString},
       password: {type: new GraphQLNonNull(GraphQLString)},
     },
-    resolve: async(_, args) => createUser(args)
+    resolve: createUser
   }
 };
 
