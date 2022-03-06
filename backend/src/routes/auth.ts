@@ -46,7 +46,7 @@ router.post('/login', async (req, res, next) => {
 
     // Generate JWT
     const jwtData = {
-      id: user.id
+      sub: user.id
     };
 
     const jwtOpts = {
