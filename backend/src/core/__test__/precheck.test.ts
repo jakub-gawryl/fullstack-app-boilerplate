@@ -43,7 +43,7 @@ describe('runPrecheck', () => {
       APP_HOST_URL: undefined
     };
 
-    await expect(runPrecheck()).rejects.toEqual('❌ Variable: APP_HOST_URL is required to run the application!');
+    await expect(runPrecheck()).rejects.toEqual('Variable APP_HOST_URL is required to run the application!');
   });
 
   it ('fails, when two vars is missing', async () => {
@@ -54,6 +54,6 @@ describe('runPrecheck', () => {
       SOME_OTHER: undefined
     };
 
-    await expect(runPrecheck()).rejects.toEqual('❌ Variables: APP_HOST_URL,SOME_OTHER are required to run the application!');
+    await expect(runPrecheck()).rejects.toEqual('Variables APP_HOST_URL,SOME_OTHER are required to run the application!');
   });
 });
