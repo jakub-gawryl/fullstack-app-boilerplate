@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { runPrecheck, runDatabase, runServer } from './core';
-import './core/passport/jwtStrategy';
+import './config/passport-strategy/jwt-strategy';
 
 const runApp = async () => {
   try {

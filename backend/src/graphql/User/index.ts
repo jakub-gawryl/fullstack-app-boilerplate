@@ -4,7 +4,7 @@ import {
   GraphQLObjectType,
   GraphQLString
 } from 'graphql';
-import { createUser, getUserById, listUsers } from '../../sequelize/User';
+import { createUser, getUserById, listUsers } from '../../controller/User';
 
 const UserType = new GraphQLObjectType({
   name: 'User',

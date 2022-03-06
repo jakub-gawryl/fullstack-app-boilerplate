@@ -1,7 +1,7 @@
-import { User } from './model';
+import { SequelizeUser } from '../../model/User';
 
 const createUser = async (args: any) => {
-  const user = await User.create({
+  const user = await SequelizeUser.create({
     ...args
   }).catch(err => {
     if (err.parent?.code === 'ER_DUP_ENTRY') {
@@ -15,7 +15,7 @@ const createUser = async (args: any) => {
 };
 
 const getUserById = async (userId: string) => {
-  const user = await User.findOne({
+  const user = await SequelizeUser.findOne({
     where: {
       id: userId
     }
@@ -25,7 +25,7 @@ const getUserById = async (userId: string) => {
 };
 
 const listUsers = async () => {
-  const users = await User.findAll();
+  const users = await SequelizeUser.findAll();
 
   return users;
 };

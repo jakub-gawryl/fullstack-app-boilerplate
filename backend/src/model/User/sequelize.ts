@@ -67,4 +67,6 @@ const User: UserModel = db.define('User', {
   }
 });
 
-export { User };
+export {
+  User
+};

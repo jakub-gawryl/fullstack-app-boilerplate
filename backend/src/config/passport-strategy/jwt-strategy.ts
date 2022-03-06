@@ -1,7 +1,7 @@
 import passport from 'passport';
 import PassportJWT from 'passport-jwt';
-import { User } from '../../sequelize/User';
-import { getConfig } from '../../config';
+import { SequelizeUser } from '../../model/User';
+import { getConfig } from '../index';
 
 const {
   jwt: {
@@ -21,7 +21,7 @@ const strategyResolver = async (jwtPayload, done) => {
     return done(null, false);
   }
 
-  const user = await User.findOne({
+  const user = await SequelizeUser.findOne({
     where: {
       id
     }

@@ -1,7 +1,7 @@
 import { Request, Router } from 'express';
 import jsonwebtoken from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { User } from '../sequelize/User';
+import { SequelizeUser } from '../model/User';
 import { verifyJWT } from '../middleware/verifyJWT';
 import { getConfig } from '../config';
 
@@ -28,7 +28,7 @@ router.post('/login', async (req, res, next) => {
     }
 
     // Get user by email address
-    const user = await User.scope('withPassword').findOne({
+    const user = await SequelizeUser.scope('withPassword').findOne({
       where: {
         email
       }
