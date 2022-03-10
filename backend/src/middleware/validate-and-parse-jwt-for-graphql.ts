@@ -24,6 +24,4 @@ const validateAndParseJWTForGraphQL = (req: Request, res: Response, next: NextFu
   })(req, res, next);
 };
 
-export {
-  validateAndParseJWTForGraphQL
-};
+export default validateAndParseJWTForGraphQL;

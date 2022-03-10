@@ -2,7 +2,7 @@ import { Request, Router } from 'express';
 import jsonwebtoken from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { SequelizeUser } from '../model/User';
-import { isJWTAuthorized } from '../middleware/isJWTAuthorized';
+import isJWTAuthorized from '../middleware/is-jwt-authorized';
 import { getConfig } from '../config';
 
 const {

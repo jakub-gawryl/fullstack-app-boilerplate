@@ -4,6 +4,4 @@ const isJWTAuthorized = passport.authenticate('jwt', {
   session: false
 });
 
-export {
-  isJWTAuthorized
-};
+export default isJWTAuthorized;
