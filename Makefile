@@ -35,16 +35,16 @@ help: 																													##@other Show this help.
 
 
 # ============ Clean ============
-clean: clean_build_dir																					##@cleaning Removes all 'build/' directories (in root, backend and frontend)
+clean: clean-build-dir																					##@cleaning Removes all 'build/' directories (in root, backend and frontend)
 
-clean_all: clean_build_dir clean_node_modules_dir								##@cleaning Same as clean + removes all node_modules directories
+clean-all: clean-build-dir clean-node-modules-dir								##@cleaning Same as clean + removes all node_modules directories
 
-clean_build_dir:
+clean-build-dir:
 	@echo $(ROOT_LABEL) "Removing build..."; rm -rf build
 	@echo $(BACK_LABEL) "Removing build..."; cd $(back); rm -rf build
 	@echo $(FRONT_LABEL) "Removing build..."; cd $(front); rm -rf build
 
-clean_node_modules_dir:
+clean-node-modules-dir:
 	@echo $(ROOT_LABEL) "Removing node_modules..."; rm -rf node_modules
 	@echo $(BACK_LABEL) "Removing node_modules..."; cd $(back); rm -rf node_modules
 	@echo $(FRONT_LABEL) "Removing node_modules..."; cd $(front); rm -rf node_modules
@@ -54,56 +54,56 @@ clean_node_modules_dir:
 install:																												##@installation Install dependencies for root directory (yarn install)
 	@echo $(ROOT_LABEL); yarn install
 
-postinstall: install_backend install_frontend										##@installation [auto triggered after install] Install dependencies for backend/ and frontend/ + copy .env files
+postinstall: install-backend install-frontend										##@installation [auto triggered after install] Install dependencies for backend/ and frontend/ + copy .env files
 	@cp .env.example .env
 	@cp .env.example .env.production
 
-install_backend:
+install-backend:
 	@echo $(BACK_LABEL); cd $(back); yarn install
 
-install_frontend:
+install-frontend:
 	@echo $(FRONT_LABEL); cd $(front); yarn install
 
-clean_install: clean_node_modules_dir install										##@installation Removes all node_modules directories and run install
+clean_install: clean-node-modules-dir install										##@installation Removes all node_modules directories and run install
 
 
 # =========== Dev ============
 dev:																														##@development Runs backend server and React's live server
 	./node_modules/.bin/npm-run-all -lp dev:backend dev:frontend
 
-dev_backend:																										##@development Runs backend server only
+dev-backend:																										##@development Runs backend server only
 	@echo $(BACK_LABEL); cd $(back); yarn dev
 
-dev_frontend:																										##@development Runs React's live server only
+dev-frontend:																										##@development Runs React's live server only
 	@echo $(FRONT_LABEL); cd $(front); yarn dev
 
 # =========== Test & Lint============
-test: test_frontend test_backend																##@testing Runs tests for frontend and backend
+test: test-frontend test-backend																##@testing Runs tests for frontend and backend
 
-test_backend:																										##@testing Runs tests only for backend
+test-backend:																										##@testing Runs tests only for backend
 	@echo $(BACK_LABEL); cd $(back); yarn test
 
-test_frontend:																									##@testing Runs tests only for frontend
+test-frontend:																									##@testing Runs tests only for frontend
 	@echo $(FRONT_LABEL); cd $(front); yarn test
 
-lint: lint_frontend lint_backend																##@other Runs eslint for frontend and backend
+lint: lint-frontend lint-backend																##@other Runs eslint for frontend and backend
 
-lint_backend:
+lint-backend:
 	@echo $(BACK_LABEL); cd $(back); yarn lint
 
-lint_frontend:
+lint-frontend:
 	@echo $(FRONT_LABEL); cd $(front); yarn lint
 
 
 # =========== Build ============
-build: lint test clean_build_dir build_backend build_frontend		##@build Builds backend + frontend
+build: lint test clean-build-dir build-backend build-frontend		##@build Builds backend + frontend
 	@cp -rf $(back)/build .
 	@cp -rf $(front)/build/ ./build/public/
 	@cp $(back)/package.json ./build/; cd build; yarn install --only=production
 	node .tools/copyProdEnv.js
 
-build_backend:
+build-backend:
 	@echo $(BACK_LABEL); cd $(back); yarn build
 
-build_frontend:
+build-frontend:
 	@echo $(FRONT_LABEL); cd $(front); yarn build
